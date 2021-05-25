@@ -1,0 +1,15 @@
+add_library(cryptoXL SHARED   
+  stream.cpp)
+
+target_compile_definitions (cryptoXL PUBLIC UNICODE)
+target_compile_definitions (cryptoXL PUBLIC _UNICODE)
+target_include_directories(cryptoXL PRIVATE xll ${CMAKE_SOURCE_DIR}/cpp/src/external/xll streaming)
+target_link_libraries(cryptoXL xll XLCALL32 streaming)
+if (CMAKE_SIZEOF_VOID_P EQUAL 8)
+	target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll/x64)
+else()
+	target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll)		
+endif()
+set_target_properties(cryptoXL PROPERTIES SUFFIX ".xll")
+set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND "$(registry:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\excel.exe)")
+set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS $(OutDir)$(TargetName)$(TargetExt))

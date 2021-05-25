@@ -1,0 +1,15 @@
+{
+  "name": "crypto",
+  "version-string": "0.0.1",
+  "dependencies": [
+    "fmt",
+    "boost-beast",
+    "boost-multiprecision",
+    "boost-random",
+    "nlohmann-json",
+    "tbb",
+    "date",
+    "spdlog",
+    "gtest"
+  ]
+}
