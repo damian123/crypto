@@ -20,4 +20,4 @@ endif()
 
 set_target_properties(cryptoXL PROPERTIES SUFFIX ".xll")
 set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND "$(registry:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\excel.exe)")
-set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS $(OutDir)$(TargetName)$(TargetExt))
+set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS /p $(OutDir) $(OutDir)$(TargetName).xll)

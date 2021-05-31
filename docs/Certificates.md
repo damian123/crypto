@@ -90,4 +90,4 @@ This will output
 Done Adding Additional Store
 Successfully signed: D:\dev\trading\crypto\build\cpp\src\adaptors\xll\Release\cryptoXL.xll
 ```
-TODO: Describe the deployemnt on a client PC, i.e. import the CA's public key and accept the warning the first time in Excel.
+TODO: Describe the deployment on a client PC, i.e. import the CA's public key and accept the warning the first time in Excel.
