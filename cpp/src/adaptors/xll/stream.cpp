@@ -17,6 +17,7 @@ AddIn xai_tick(
 double WINAPI xll_tick()
 {
 #pragma XLLEXPORT
+	using namespace std::chrono_literals;
 	StreamingMarketData stream;
 	stream.SecID("BTC/USD");
 	stream.start();
