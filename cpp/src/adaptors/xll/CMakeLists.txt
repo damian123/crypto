@@ -21,10 +21,11 @@ target_link_libraries(cryptoXL
   fmt::fmt)
 
 if (CMAKE_SIZEOF_VOID_P EQUAL 8)
-	target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll/x64)
+  target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll/x64)
 else()
-	target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll)		
+  target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll)		
 endif()
+
 set_target_properties(cryptoXL PROPERTIES SUFFIX ".xll")
 set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND "$(registry:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\excel.exe)")
 set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS $(OutDir)$(TargetName).xll)
