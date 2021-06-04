@@ -13,7 +13,8 @@ target_include_directories(crypto_test PRIVATE
   ${CMAKE_SOURCE_DIR}/cpp/src/external/xll 
   ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/marketdata
   ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/feed/exchange/FTX
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external)
+  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external
+  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external/websocketpp)
 
 target_link_libraries(crypto_test PRIVATE 
   securities

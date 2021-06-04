@@ -12,7 +12,8 @@ target_include_directories(cryptoXL PRIVATE
   ${CMAKE_SOURCE_DIR}/cpp/src/external/xll 
   ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/marketdata
   ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/feed/exchange/FTX
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external)
+  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external
+  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external/websocketpp)
 
 target_link_libraries(cryptoXL 
   xll 
