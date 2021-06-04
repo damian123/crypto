@@ -23,6 +23,7 @@ if (WIN32)
 endif()
 
 include_directories(SYSTEM cpp/src/external)
+include_directories(SYSTEM cpp/src/external/websocketpp)
 
 add_subdirectory(cpp/src/external/CryptoData)
 add_subdirectory(cpp/src/external/xll)
