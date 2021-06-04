@@ -11,9 +11,14 @@ conan install .. -s compiler="Visual Studio" -s compiler.version=16 -sbuild_type
 cmake .. -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=on
 cmake --build . --parallel --config Debug
 
-TODO: The xll is not loading directly when debugging in Visual Studio
+# Running
+If the tests or Excel addin fails to load it might be because it can't find the dependent dll shared libraries. 
+To fix this add the path to the missing libraries before loading. 
+`set PATH=D:\dev\trading\crypto\build\bin;%PATH%`
 
-Done. Automate this manual intervention.. In C:\dev\trading\crypto\cpp\src\external\xll\CMakeLists.txt at the end of the file make sure only add_subdirectory(xll) is there.
-cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release "-DCMAKE_TOOLCHAIN_FILE=C:\dev\trading\crypto\cpp\src\external\CryptoData\cpp\src\external\vcpkg\scripts\buildsystems\vcpkg.cmake"
-ninja
-TODO: adding "-DVCPKG_TARGET_TRIPLET=x64-windows-static" to cmake gives a linker error: tbb.lib(tbb_main.obj) : error LNK2005: DllMain already defined in xll.lib(dllmain.cpp.obj)
+# Debugging
+In a command prompt
+`set PATH=D:\dev\trading\crypto\build\bin;%PATH%`
+`"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.exe"`
+
+TODO: The xll is not loading directly when debugging in Visual Studio
