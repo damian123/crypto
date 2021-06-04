@@ -1,0 +1,48 @@
+name: Build Credit
+
+on:
+  push:    
+  pull_request:
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  windows:
+    name: 'windows/msvc - ${{matrix.link}}'
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout Credit source code
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Install dependencies
+        run: |
+          pip install conan
+
+      - name: Create build directory
+        run: |
+          mkdir build
+
+      - name: Install conan packages
+        shell: pwsh
+        working-directory: ./build
+        run: |
+          conan install .. -s compiler="Visual Studio" -s compiler.version=16 -s build_type=Release
+
+      - name: Create Build Environment & Configure Cmake
+        shell: bash
+        working-directory: ./build
+        run: |
+          cmake .. -DBUILD_TESTS=on -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        working-directory: ./build
+        shell: bash
+        run: |
+          cmake --build . --parallel --config Release
+  
