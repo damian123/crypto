@@ -18,7 +18,7 @@ jobs:
       - name: Checkout Crypto source code
         uses: actions/checkout@v2
         with:
-          submodules: true
+          submodules: recursive
 
       - name: Install dependencies
         run: |
@@ -45,4 +45,6 @@ jobs:
         shell: bash
         run: |
           cmake --build . --parallel --config Release
+          # Use this when you want to debug the build.
+          #cmake --build . --config Release --verbose
   
