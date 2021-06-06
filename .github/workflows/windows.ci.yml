@@ -44,6 +44,7 @@ jobs:
         working-directory: ./build
         shell: bash
         run: |
-          cmake --build . --config Release --verbose
-          #cmake --build . --parallel --config Release
+          cmake --build . --parallel --config Release
+          # Use this when you want to debug the build.
+          #cmake --build . --config Release --verbose
   
