@@ -20,3 +20,4 @@ fmt:shared=True
 bin, *.dll -> ./bin
 lib, *.dylib* -> ./bin
 lib, *.so* -> ./bin
+bin, *.dll -> ./install/bin
