@@ -44,5 +44,6 @@ jobs:
         working-directory: ./build
         shell: bash
         run: |
-          cmake --build . --parallel --config Release --verbose
+          cmake --build . --config Release --verbose
+          #cmake --build . --parallel --config Release
   
