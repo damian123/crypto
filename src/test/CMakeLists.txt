@@ -10,11 +10,11 @@ add_executable(crypto_test
 
 target_include_directories(crypto_test PRIVATE 
   securities streaming
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/xll 
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/marketdata
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/feed/exchange/FTX
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external/websocketpp)
+  ${CMAKE_SOURCE_DIR}/src/external/xll 
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/marketdata
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/feed/exchange/FTX
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/external
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/external/websocketpp)
 
 target_link_libraries(crypto_test PRIVATE 
   securities

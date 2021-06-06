@@ -1,6 +1,6 @@
 [submodule "cpp/src/external/CryptoData"]
-	path = cpp/src/external/CryptoData
+	path = src/external/CryptoData
 	url = https://github.com/damian123/CryptoData.git
 [submodule "cpp/src/external/xll"]
-	path = cpp/src/external/xll
+	path = src/external/xll
 	url = https://github.com/xlladdins/xll.git
