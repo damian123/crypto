@@ -33,3 +33,6 @@
 
 # CMake Build directory
 build
+
+# CMake Install directory
+install

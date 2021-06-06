@@ -22,3 +22,8 @@ In a command prompt
 `"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\devenv.exe"`
 
 TODO: The xll is not loading directly when debugging in Visual Studio
+
+# Install 
+cmake --install . --prefix install
+
+Conan already copied the dependent .dlls to the install directory.

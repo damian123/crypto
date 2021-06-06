@@ -1,16 +1,11 @@
 cmake_minimum_required(VERSION 3.19)
-project(crypto CXX C)
+
+project(crypto VERSION 1.0.0 LANGUAGES CXX C )
 
 option(BUILD_TESTS "Build the tests." OFF)
 option(BUILD_DOCS "Build the documentation" OFF)
 #option(CRYPTO_PEDANTIC "Enable extra warnings and expensive tests." OFF)
 #option(CRYPTO_WERROR   "Halt the compilation with an error on compiler warnings." OFF)
-
-set(CRYPTO_MAJOR_VERSION 1)
-set(CRYPTO_MINOR_VERSION 0)
-set(CRYPTO_PATCH_VERSION 0)
-set(CRYPTO_VERSION
-    ${CRYPTO_MAJOR_VERSION}.${CRYPTO_MINOR_VERSION}.${CRYPTO_PATCH_VERSION})
 
 set(CMAKE_CXX_STANDARD 20)
 if (WIN32)
@@ -39,3 +34,4 @@ if (BUILD_DOCS)
   message(STATUS "Building docs")
   add_subdirectory(src/docs)
 endif()
+

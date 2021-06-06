@@ -1,3 +1,5 @@
+enable_testing()
+
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
@@ -25,8 +27,8 @@ target_link_libraries(crypto_test PRIVATE
 
 set_target_properties(crypto_test PROPERTIES LINK_FLAGS "/ignore:4099")
 
-#add_test(
-#    NAME crypto_test
-#    COMMAND crypto_test
-#)
+add_test(
+    NAME crypto_test
+    COMMAND crypto_test
+)
 

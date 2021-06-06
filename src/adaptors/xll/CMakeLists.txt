@@ -29,8 +29,11 @@ else()
   target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/src/external/xll/xll)		
 endif()
 
+#Turn off linker warnings for missing debug symbol files from Conan
 set_target_properties(cryptoXL PROPERTIES LINK_FLAGS "/ignore:4099")
 
 set_target_properties(cryptoXL PROPERTIES SUFFIX ".xll")
 set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND "$(registry:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\excel.exe)")
 set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS $(OutDir)$(TargetName).xll)
+
+install(TARGETS cryptoXL DESTINATION bin)
