@@ -9,11 +9,11 @@ target_compile_definitions (cryptoXL PUBLIC _UNICODE)
 
 target_include_directories(cryptoXL PRIVATE 
   xll 
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/xll 
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/marketdata
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/feed/exchange/FTX
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external
-  ${CMAKE_SOURCE_DIR}/cpp/src/external/CryptoData/cpp/src/external/websocketpp)
+  ${CMAKE_SOURCE_DIR}/src/external/xll 
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/marketdata
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/feed/exchange/FTX
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/external
+  ${CMAKE_SOURCE_DIR}/src/external/CryptoData/cpp/src/external/websocketpp)
 
 target_link_libraries(cryptoXL 
   xll 
@@ -24,9 +24,9 @@ target_link_libraries(cryptoXL
   ${CONAN_LIBS})  
 
 if (CMAKE_SIZEOF_VOID_P EQUAL 8)
-  target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll/x64)
+  target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/src/external/xll/xll/x64)
 else()
-  target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/cpp/src/external/xll/xll)		
+  target_link_directories(cryptoXL PRIVATE ${CMAKE_SOURCE_DIR}/src/external/xll/xll)		
 endif()
 
 set_target_properties(cryptoXL PROPERTIES LINK_FLAGS "/ignore:4099")

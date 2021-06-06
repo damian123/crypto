@@ -22,20 +22,20 @@ if (WIN32)
   #set(CMAKE_CXX_FLAGS_DEBUG "/MTd")
 endif()
 
-include_directories(SYSTEM cpp/src/external)
-include_directories(SYSTEM cpp/src/external/CryptoData/cpp/src/external/websocketpp)
+include_directories(SYSTEM src/external)
+include_directories(SYSTEM src/external/CryptoData/cpp/src/external/websocketpp)
 
-add_subdirectory(cpp/src/external/CryptoData)
-add_subdirectory(cpp/src/external/xll)
+add_subdirectory(src/external/CryptoData)
+add_subdirectory(src/external/xll)
 
-add_subdirectory(cpp/src/adaptors/xll)
+add_subdirectory(src/adaptors/xll)
 
 if (BUILD_TESTS)
   message(STATUS "Building tests")
-  add_subdirectory(cpp/src/test)
+  add_subdirectory(src/test)
 endif()
 
 if (BUILD_DOCS)
   message(STATUS "Building docs")
-  add_subdirectory(cpp/docs)
+  add_subdirectory(src/docs)
 endif()
