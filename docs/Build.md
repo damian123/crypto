@@ -19,6 +19,7 @@ cmake --build . --parallel --config Debug
 If the tests or Excel addin fails to load it might be because it can't find the dependent dll shared libraries. 
 To fix this add the path to the missing libraries before loading. 
 `set PATH=D:\dev\trading\crypto\build\bin;%PATH%`
+"C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE" cryptoXL.xll
 
 # Debugging
 In a command prompt
