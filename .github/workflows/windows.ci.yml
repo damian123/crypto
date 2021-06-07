@@ -52,4 +52,4 @@ jobs:
         working-directory: ./build/bin/bin
         shell: bash
         run: |
-          ctest
+          ctest --verbose
