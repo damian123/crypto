@@ -27,7 +27,7 @@ add_subdirectory(src/adaptors/xll)
 
 if (BUILD_TESTS)
   message(STATUS "Building tests")
-  add_subdirectory(src/test)
+  add_subdirectory(src/test ${CMAKE_BINARY_DIR}/bin/bin)
 endif()
 
 if (BUILD_DOCS)

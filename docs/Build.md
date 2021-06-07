@@ -11,6 +11,10 @@ conan install .. -s compiler="Visual Studio" -s compiler.version=16 -sbuild_type
 cmake .. -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=on
 cmake --build . --parallel --config Debug
 
+# Test
+`cd build\bin\bin`
+`ctest`
+
 # Running
 If the tests or Excel addin fails to load it might be because it can't find the dependent dll shared libraries. 
 To fix this add the path to the missing libraries before loading. 
