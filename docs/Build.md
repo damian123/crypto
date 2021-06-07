@@ -8,8 +8,12 @@ Open a x64 Native Tools Command Prompt for VS 2019
 mkdir build
 cd build
 conan install .. -s compiler="Visual Studio" -s compiler.version=16 -sbuild_type=Debug
-cmake .. -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS=on
+cmake .. -DCMAKE_BUILD_TYPE=Debug -DBUILD_TESTS_CRYPTO=on
 cmake --build . --parallel --config Debug
+
+# Test
+`cd build\bin\bin`
+`ctest`
 
 # Running
 If the tests or Excel addin fails to load it might be because it can't find the dependent dll shared libraries. 

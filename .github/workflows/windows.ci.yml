@@ -38,7 +38,7 @@ jobs:
         shell: bash
         working-directory: ./build
         run: |
-          cmake .. -DBUILD_TESTS=on -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=Release
+          cmake .. -DBUILD_TESTS_CRYPTO=on -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
         working-directory: ./build
@@ -47,4 +47,9 @@ jobs:
           cmake --build . --parallel --config Release
           # Use this when you want to debug the build.
           #cmake --build . --config Release --verbose
-  
+
+      - name: Test
+        working-directory: ./build/bin/bin
+        shell: bash
+        run: |
+          ctest --verbose
