@@ -67,11 +67,9 @@ Auto<Close> xai_close([]() {
 
 AddIn xai_subscribe(
 	Function(XLL_LPOPER, "xll_subscribe", "SUBSCRIBE")
-	.Arguments({
-		Arg(XLL_CSTRING, "SecCode", "The security code", "")
-		})
+	.Arguments({Arg(XLL_CSTRING, "Request", "The request field. The default is mid, which will return the mid price", "mid")})
 	.FunctionHelp("Subscribe to tick data.")
-	.Category("CRYPTO-MARKET")
+	.Category("Crypto")
 	.HelpTopic("")
 );
 LPOPER WINAPI xll_subscribe(xcstr seccode)
@@ -106,21 +104,43 @@ LPOPER WINAPI xll_subscribe(xcstr seccode)
 AddIn xai_tick(
 	Function(XLL_LPOPER, "xll_tick", "TICK")
 	.Arguments({
+		Arg(XLL_CSTRING, "Request", "The request field. The default is mid, which will return the mid price", "mid"),
 		Arg(XLL_CSTRING, "SecCode", "The security code", "")
 	})
 	.FunctionHelp("Return the tick value.")
-	.Category("CRYPTO-MARKET")
+	.Category("Crypto")
 	.HelpTopic("")
 );
-LPOPER WINAPI xll_tick(xcstr seccode)
+LPOPER WINAPI xll_tick(xcstr request, xcstr seccode)
 {	
 #pragma XLLEXPORT
 	static OPER result;
 
-	try {		
+	try {
+		std::string req = ws2s(request);
+		if (req.empty()) {
+			req = "mid";
+		}
 		std::string sc = ws2s(seccode);
 		Tick t = StreamingMarketData::getInstance().getTick(sc);
-		result = (t.bid+t.ask)/2.0;		
+		if (req.compare("mid") == 0) {
+			result = (t.bid + t.ask) / 2.0;
+		}
+		else if (req.compare("time") == 0) {
+			result = t.time;	// TODO: Convert to Excel date-time
+		}
+		else if (req.compare("bid") == 0) {
+			result = t.bid;
+		}
+		else if (req.compare("ask") == 0) {
+			result = t.ask;
+		}
+		else if (req.compare("last") == 0) {
+			result = t.last;
+		}
+		else{
+			result = s2ws("Invalid request").c_str();
+		}
 	}
 	catch (std::exception ex) {
 		result = ex.what();
