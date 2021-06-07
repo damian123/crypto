@@ -21,3 +21,4 @@ bin, *.dll -> ./bin/bin/bin
 lib, *.dylib* -> ./bin/bin/bin
 lib, *.so* -> ./bin/bin/bin
 bin, *.dll -> ./install/bin
+bin, *.dll -> ./src/adaptors/xll/bin
