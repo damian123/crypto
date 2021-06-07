@@ -29,6 +29,7 @@ In a command prompt
 TODO: The xll is not loading directly when debugging in Visual Studio
 
 # Install 
+cd build
 cmake --install . --prefix install
 
 Conan already copied the dependent .dlls to the install directory.
