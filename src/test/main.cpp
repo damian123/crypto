@@ -3,7 +3,7 @@
 #include <spdlog/async.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/rotating_file_sink.h>
-// #include <marketdataFeed.hpp>
+#include <StreamingMarketData.h>
 
 class Environment : public ::testing::Environment {
 public:
@@ -31,23 +31,27 @@ public:
             spdlog::register_logger(logger);                       
         }
 
-        try {
-            // Listen for order book updates for the BTCUSDT pair.
-            //std::vector<std::string> pairs{ "BTCUSDT" };
-            //marketdata_feed::getInstance().start(pairs);
-        }
-        catch (const std::exception& ex)
-        {
-            //spdlog::get("binapi")->error(fmt::format("Failed to setup the MarketDataFeedTest: {}", ex.what()));
-            //FAIL();
-        }
+		try {
+			StreamingMarketData::getInstance().SecID("BTC/USD");
+			StreamingMarketData::getInstance().start();
+
+            using namespace std::chrono_literals;
+            std::this_thread::sleep_for(0.5s);  // wait for the feed to get data. Instead of this: Async wait for confirmation from the exchange and the first market data to arrive.
+		}
+		catch (const std::exception& ex)
+		{
+			spdlog::get("CryptoData")->error(fmt::format("Failed to setup the MarketDataFeedTest: {}", ex.what()));
+			FAIL();
+		}
     }
 
     // Override this to define how to tear down the environment.
     void TearDown() override 
     {
-        // marketdata_feed::getInstance().stop();
-        spdlog::drop_all();        
+		using namespace std::chrono_literals;
+
+		StreamingMarketData::getInstance().stop();
+		std::this_thread::sleep_for(0.5s);  // wait bit for the feed to shut down.
     }
 };
 
