@@ -1,7 +1,7 @@
 # prerequisites
 Visual Studio 2019
 Conan dependency and package manager `pip install conan`
-(optional) Update submodules `git submodule update --init --recursive` or `git pull --recurse-submodules` or `git submodule update --remote --merge`
+(optional) Update submodules `submodule sync --recursive`and `git -c protocol.version=2 submodule update --init --force --depth=1 --recursive`
 
 # Build
 Open a x64 Native Tools Command Prompt for VS 2019
