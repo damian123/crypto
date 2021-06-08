@@ -83,7 +83,9 @@ Auto<Close> xai_close([]() {
 
 AddIn xai_subscribe(
 	Function(XLL_LPOPER, "xll_subscribe", "SUBSCRIBE")
-	.Arguments({Arg(XLL_CSTRING, "Request", "The request field. The default is mid, which will return the mid price", "mid")})
+	.Arguments({
+		Arg(XLL_CSTRING, "SecCode", "The security code", "")
+	})	
 	.FunctionHelp("Subscribe to tick data.")
 	.Category("Crypto")
 	.HelpTopic("")
