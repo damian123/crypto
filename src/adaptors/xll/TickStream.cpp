@@ -56,12 +56,28 @@ Auto<Open> xai_open([]() {
 		spdlog::register_logger(logger);
 	}
 
+	try {
+		StreamingMarketData::getInstance().SecID("BTC/USD");
+		StreamingMarketData::getInstance().start();
+
+		using namespace std::chrono_literals;
+		std::this_thread::sleep_for(0.5s);  // wait for the feed to get data. Instead of this: Async wait for confirmation from the exchange and the first market data to arrive.
+	}
+	catch (const std::exception& ex)
+	{
+		spdlog::get("CryptoData")->error(fmt::format("Failed to setup the MarketDataFeedTest: {}", ex.what()));
+		return FALSE;
+	}
+
 	return TRUE;
 });
 
 Auto<Close> xai_close([]() {
-	StreamingMarketData::getInstance().stop();  // shutdown the market data stream.
-	//spdlog::drop_all();
+	using namespace std::chrono_literals;
+
+	StreamingMarketData::getInstance().stop();
+	std::this_thread::sleep_for(0.5s);  // wait bit for the feed to shut down.
+	
 	return TRUE;
 });
 
@@ -75,21 +91,12 @@ AddIn xai_subscribe(
 LPOPER WINAPI xll_subscribe(xcstr seccode)
 {
 #pragma XLLEXPORT
-	static OPER result;
-	static auto firstCall = true;
+	static OPER result;	
 
 	try {
 		std::string sc = ws2s(seccode);
-		if (firstCall)
-		{
-			StreamingMarketData::getInstance().SecID(sc);
-			StreamingMarketData::getInstance().start();
-			firstCall = false;
-		}
-		else
-		{		
-			StreamingMarketData::getInstance().Subscribe(sc);
-		}
+		StreamingMarketData::getInstance().Subscribe(sc);
+
 		result = "OK";	// We will receive an async message with the result of the message send to the exchange server. 
 						// Maybe have a future wait for the message to arrive with the result of this request.
 						// At the moment it will be send to the log
