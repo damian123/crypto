@@ -36,6 +36,6 @@ set_target_properties(cryptoXL PROPERTIES LINK_FLAGS "/ignore:4099")
 
 set_target_properties(cryptoXL PROPERTIES SUFFIX ".xll")
 set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND "$(registry:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\excel.exe)")
-set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS "/p \"$(ProjectDir)\" \"$<TARGET_FILE:cryptoXL>\"")
+set_target_properties(cryptoXL PROPERTIES VS_DEBUGGER_COMMAND_ARGUMENTS "/p \"$(OutDir)\" \"$<TARGET_FILE:cryptoXL>\"")
 
 install(TARGETS cryptoXL DESTINATION bin)
