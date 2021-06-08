@@ -12,13 +12,10 @@ tbb/[>=2020.3]
 cmake
 
 [options]
-Boost:shared=True
-spdlog:shared=True
-fmt:shared=True
+Boost:shared=False
+spdlog:shared=False
+fmt:shared=False
+#OpenSSL:shared=False
+tbb:shared=True
 
 [imports]
-bin, *.dll -> ./bin/bin/bin
-lib, *.dylib* -> ./bin/bin/bin
-lib, *.so* -> ./bin/bin/bin
-bin, *.dll -> ./install/bin
-bin, *.dll -> ./src/adaptors/xll/bin
