@@ -15,7 +15,9 @@ cmake
 Boost:shared=False
 spdlog:shared=False
 fmt:shared=False
-#OpenSSL:shared=False
+OpenSSL:shared=True
 tbb:shared=True
 
 [imports]
+bin, *.dll -> ./bin/bin/bin
+bin, *.dll -> ./src/adaptors/xll/bin
