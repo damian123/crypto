@@ -1,7 +1,7 @@
 # prerequisites
 Visual Studio 2019
 Conan dependency and package manager `pip install conan`
-(optional) Update submodules `submodule sync --recursive`and `git -c protocol.version=2 submodule update --init --force --depth=1 --recursive`
+(optional) Update submodules `git submodule sync --recursive`and `git -c protocol.version=2 submodule update --init --force --depth=1 --recursive`
 
 # Build
 Open a x64 Native Tools Command Prompt for VS 2019
@@ -29,7 +29,7 @@ In a command prompt
 TODO: The xll is not loading directly when debugging in Visual Studio
 
 # Install 
-cd build
+cd build 
 cmake --install . --prefix install
 
 Conan already copied the dependent .dlls to the install directory.
