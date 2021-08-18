@@ -6,7 +6,7 @@ Install OpenSSL in powershell
 `choco install openssl`
 
 check where openssl is installed by typing
-`where open`
+`where openssl`
 which should output
 `C:\Program Files\OpenSSL-Win64\bin\openssl.exe`
 
@@ -83,7 +83,7 @@ CertUtil -f -p "<PASSWORD>"" -importpfx certificate\certificates\headquarters.xy
 # Sign the .xll
 
 ```
-"C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool" sign /f d:\dev\trading\crypto\cpp\src\adaptors\xll\cert\certificates\headquarters.xyz.corp_keystore.pfx /p "<PASSORD>" D:\dev\trading\crypto\build\cpp\src\adaptors\xll\Release\cryptoXL.xll
+"C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x64\signtool" sign /f d:\dev\trading\crypto\cpp\src\adaptors\xll\cert\certificates\headquarters.xyz.corp_keystore.pfx /p "<PASSWORD>" D:\dev\trading\crypto\build\cpp\src\adaptors\xll\Release\cryptoXL.xll
 ```
 This will output
 ```
